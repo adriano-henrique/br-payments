@@ -1,15 +1,11 @@
-import { calculateCRC16 } from "./helper.js"
-import type { StaticPixParams } from "./types.js"
-import { validatePixKey } from "./validator.js"
+import type { StaticPixParams } from '../types'
+import { validatePixKey } from '../validator'
+import { calculateCRC16 } from './crc16'
+import { buildTLV } from './tlv'
 
 const MERCHANT_VALUE_PIX = 'BR.GOV.BCB.PIX'
 
-function buildTLV(id: string, value: string): string {
-    const length = value.length.toString().padStart(2, '0')
-    return `${id}${length}${value}`
-}
-
-function buildPixPayload(
+export function buildPixPayload(
     params: StaticPixParams
 ): string {
     validatePixKey(params.key, params.keyType)

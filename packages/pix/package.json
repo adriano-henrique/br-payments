@@ -1,15 +1,26 @@
 {
-  "name": "pix",
+  "name": "@br-payments/pix",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "generate": "npx tsx ./src/generator.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "description": "Brazilian PIX static payload generator",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "dev": "tsx src/index.ts",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "tsx": "^4.22.1"
+  },
+  "keywords": ["pix", "brazil", "payments", "qrcode"],
+  "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.22.0"
 }

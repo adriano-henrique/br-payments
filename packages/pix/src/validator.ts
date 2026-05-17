@@ -1,4 +1,4 @@
-import { PixValidationError, type PixKeyType } from "./types.js"
+import { PixValidationError, type PixKeyType } from './types'
 
 const VALIDATION_RULES = {
     cpf: /^\d{11}$/,
