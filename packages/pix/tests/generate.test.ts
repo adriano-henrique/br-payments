@@ -65,6 +65,16 @@ describe('generateStaticPix', () => {
         expect(raw).toContain('MYORDER123')
     })
 
+    it('includes description inside field 26 when provided', () => {
+        const { raw } = generateStaticPix({ ...BASE_PARAMS, description: 'Pagamento de teste' })
+        expect(raw).toContain('Pagamento de teste')
+    })
+
+    it('omits description field when not provided', () => {
+        const { raw } = generateStaticPix(BASE_PARAMS)
+        expect(raw).not.toContain('0218')
+    })
+
     it('throws PixValidationError for an invalid key', () => {
         expect(() =>
             generateStaticPix({ ...BASE_PARAMS, key: 'not-a-cpf' })
